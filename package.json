@@ -1,0 +1,25 @@
+{
+  "name": "sp14420-modal",
+  "version": "1.0.0",
+  "description": "Modal handler",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx esbuild src/Modal.ts --outfile=dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Spencer14420/SP-Modal.git"
+  },
+  "author": "Spencer14420",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Spencer14420/SP-Modal/issues"
+  },
+  "homepage": "https://github.com/Spencer14420/SP-Modal#readme",
+  "devDependencies": {
+    "esbuild": "0.24.0",
+    "prettier": "3.3.3",
+    "typescript": "^5.7.2"
+  }
+}
