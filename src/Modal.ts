@@ -1,8 +1,8 @@
 export class Modal {
   private element: HTMLElement;
   private modalContent: HTMLElement;
-  private showButton: HTMLElement | null;
-  private closeButton: HTMLElement | null;
+  private showButtons: NodeListOf<HTMLElement>;
+  private closeButtons: NodeListOf<HTMLElement>;
   private outsideClickHandler: (event: MouseEvent) => void;
   private isTransitioning: boolean = false;
 
@@ -19,8 +19,12 @@ export class Modal {
     }
     this.modalContent = modalContent;
 
-    this.showButton = document.querySelector(`[data-bs-target="${selector}"]`);
-    this.closeButton = this.element.querySelector(".btn-close");
+    this.showButtons = document.querySelectorAll(
+      `[data-showModal="${selector}"]`
+    );
+    this.closeButtons = document.querySelectorAll(
+      `[data-closeModal="${selector}"]`
+    );
 
     this.outsideClickHandler = this.handleOutsideClick.bind(this);
 
@@ -90,8 +94,12 @@ export class Modal {
   }
 
   private initializeEventListeners(): void {
-    this.showButton?.addEventListener("click", () => this.show());
-    this.closeButton?.addEventListener("click", () => this.hide());
+    this.showButtons?.forEach((button) => {
+      button.addEventListener("click", () => this.show());
+    });
+    this.closeButtons?.forEach((button) => {
+      button.addEventListener("click", () => this.hide());
+    });
   }
 
   private handleOutsideClick(event: MouseEvent): void {

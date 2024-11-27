@@ -1,6 +1,6 @@
 {
   "name": "sp14420-modal",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Modal handler",
   "main": "dist/index.js",
   "types": "dist/Modal.d.ts",
