@@ -17,9 +17,11 @@ export class Modal {
     }
     this.modalContent = modalContent;
     this.showButtons = document.querySelectorAll(
-      `[data-bs-target="${selector}"]`
+      `[data-showModal="${selector}"]`
     );
-    this.closeButtons = this.element.querySelectorAll(".btn-close");
+    this.closeButtons = document.querySelectorAll(
+      `[data-closeModal="${selector}"]`
+    );
     this.outsideClickHandler = this.handleOutsideClick.bind(this);
     this.initializeEventListeners();
   }
