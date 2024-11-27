@@ -1,8 +1,8 @@
 export class Modal {
   element;
   modalContent;
-  showButton;
-  closeButton;
+  showButtons;
+  closeButtons;
   outsideClickHandler;
   isTransitioning = false;
   constructor(selector) {
@@ -16,8 +16,10 @@ export class Modal {
       throw new Error(`Modal content element not found inside "${selector}".`);
     }
     this.modalContent = modalContent;
-    this.showButton = document.querySelector(`[data-bs-target="${selector}"]`);
-    this.closeButton = this.element.querySelector(".btn-close");
+    this.showButtons = document.querySelectorAll(
+      `[data-bs-target="${selector}"]`
+    );
+    this.closeButtons = this.element.querySelectorAll(".btn-close");
     this.outsideClickHandler = this.handleOutsideClick.bind(this);
     this.initializeEventListeners();
   }
@@ -65,8 +67,12 @@ export class Modal {
     }, transitionDuration);
   }
   initializeEventListeners() {
-    this.showButton?.addEventListener("click", () => this.show());
-    this.closeButton?.addEventListener("click", () => this.hide());
+    this.showButtons?.forEach((button) => {
+      button.addEventListener("click", () => this.show());
+    });
+    this.closeButtons?.forEach((button) => {
+      button.addEventListener("click", () => this.hide());
+    });
   }
   handleOutsideClick(event) {
     if (!this.modalContent.contains(event.target)) {
