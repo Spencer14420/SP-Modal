@@ -20,7 +20,7 @@
   "homepage": "https://github.com/Spencer14420/SP-Modal#readme",
   "devDependencies": {
     "esbuild": "0.24.2",
-    "prettier": "3.4.2",
+    "prettier": "3.5.0",
     "typescript": "^5.7.2"
   }
 }
